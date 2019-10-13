@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+const PORT = process.env.PORT || 5000;
 
 app.use(express.static('htmls'));
 app.get('/index.html', function (req, res) {
@@ -16,9 +17,4 @@ app.get('/process_get', function (req, res) {
    res.end(JSON.stringify(response));
 })
 
-var server = app.listen(3000, function () {
-   var host = server.address().address
-   var port = server.address().port
-   
-   console.log("Example app listening at http://%s:%s", host, port)
-})
+var server = app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
